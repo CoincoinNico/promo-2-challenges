@@ -2,7 +2,8 @@
 # Ruby library, giving you access to the Date class.
 require 'date'
 
-
 def age_in_days(day, month, year)
   #TODO: return the age expressed in days given the day, month, and year of birth
+  age = ((Time.new-Time.new(year, month, day))/(3600*24)).to_i
+  return "Your age is #{age}"
 end
