@@ -7,7 +7,7 @@ def hop_hop_hop(number_of_exercises)
         counter += 1
       end
     print 'One more time..' + "\n"
-    end
+  end
 end
 
 hop_hop_hop(6)
