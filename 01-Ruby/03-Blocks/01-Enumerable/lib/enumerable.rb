@@ -8,6 +8,7 @@ def sum_odd_indexed(array)
   sum
 end
 
+
 def even_numbers(array)
   # TODO: Return the even numbers from a list of integers.
   #       You should use Enumerable#select
@@ -49,7 +50,9 @@ end
 def sorted_pairs(array)
   # TODO: Reorganize an array into slices of 2 elements, and sort each slice alphabetically.
   #       You should make use of Enumerable#each_slice
-  array.each_slice(2) { |element| print element.sort }
+  new_array = []
+  array.each_slice(2) { |element| new_array << element.sort }
+  new_array
   
 end
 
