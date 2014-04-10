@@ -15,10 +15,9 @@ def quote_prime_numbers(n)
   #sélectionne les diviseurs dont la division euclidienne avec tous les nombres de 2 à lui-même ne rend pas de reste nul
   #la valeur true est obtenue sur le count
   #compte le nombre de diviseurs qui 
-  potential_divisers = (1..n)
-  prime_divisers = potential_divisers.find_all do |i|
-  	array_of_divisers_of_divisers=(2..i-1).select {|k| i % k == 0 }
-  	array_of_divisers_of_divisers.count == 0 
+  prime_divisers = (1..n).find_all do |i|
+  	divisers_of_divisers=(2..i-1).select {|k| i % k == 0 }
+  	divisers_of_divisers.count == 0 
   end
-  prime_divisers.map{ |prime_num| "#{prime_num} is prime"}
+  	prime_divisers.map{ |prime_num| "#{prime_num} is prime"}
 end
