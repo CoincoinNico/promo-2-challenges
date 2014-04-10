@@ -15,7 +15,6 @@ def even_numbers(array)
   array
 end
 
-puts even_numbers(A)
 
 def short_words(array, max_length)
   # TODO: Take and array of words, return the array of words not exceeding max_length characters
