@@ -10,14 +10,30 @@ def louchebemize(sentence)
   	  if word.length == 1
 	  	word
 	  else
-	  	word.insert(0, "l") if 'aeiouy'.include? word[0]
-	  	if '.!?§§??!!'.include? word[-1]
-	  		word.insert(word.length-1, suffixes[rand(0..6)])
-	  	else
-	  		word << suffixes[rand(0..6)]
-	  	end
+		  	if 'aeiouy'.include? (word[0].upcase || word[0].downcase)
+		  		if word[0] == word[0].upcase
+					word.insert(0, "L")
+		  		else
+					word.insert(0, "l")
+		  		end
+
+
+		  	else
+		  		word << word[0].downcase
+		  		
+		  		if word[0] == word[0].upcase
+		  			word[0] = "L"
+		  		else
+		  			word[0] = "l"
+		  		end
+				
+				if 'bcdfghjklmnpqrstvwxz'.include? word[1]	  	
+		  			word << word.slice!(1)
+		  		end		
+		  	end
+	   		word << suffixes[rand(0..6)]
 	  end
   end  
   words.join(" ")
 end
-louchebemize ("L'ouragan est violent. La mer est déchaînée.")
+louchebemize ("Le Yéti est violent !!! La mer est chat, fou!! Déchaînée, je ne vais pas me baigner.")
