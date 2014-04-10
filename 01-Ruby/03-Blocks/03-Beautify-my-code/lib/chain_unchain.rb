@@ -8,11 +8,6 @@ def shuffle_word(a_word)
   
 end
 
-def array_of_divisers(n)
-  #TODO: refactor this method
-  (1..n).select {|i| n % i == 0 }
-
-end
 
 def quote_prime_numbers(n)
   #TODO: refactor this method
