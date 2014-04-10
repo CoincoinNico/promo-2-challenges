@@ -4,7 +4,7 @@ def tag(tag_name, attr = nil)
  if attr == nil
  	"<#{tag_name}>" + yield + "</#{tag_name}>"
  else
- 	"<#{tag_name}>" + "#{attr[0]}='#{attr[1]}'" + yield + "</#{tag_name}>"
+ 	"<#{tag_name}" + " "+ "#{attr[0]}='#{attr[1]}'>" + yield + "</#{tag_name}>"
  end
 end
 

@@ -19,5 +19,7 @@ def quote_prime_numbers(n)
   	divisers_of_divisers=(2..i-1).select {|k| i % k == 0 }
   	divisers_of_divisers.count == 0 
   end
-  	prime_divisers.map{ |prime_num| "#{prime_num} is prime"}
+  
+  prime_divisers.map{ |prime_num| "#{prime_num} is prime"}
+
 end
