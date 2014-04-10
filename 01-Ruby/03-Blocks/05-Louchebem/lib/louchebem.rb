@@ -28,9 +28,6 @@ def louchebemize_word(word)
 word
 end
 
-louchebemize_word("se")
-
-
 def louchebemize(sentence)
  
   words = sentence.split(/\b/)
@@ -45,4 +42,3 @@ def louchebemize(sentence)
   words.join("")
 end
 
-louchebemize ("Le chat, va à la plage se 999 baigner!!!")
