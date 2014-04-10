@@ -18,8 +18,6 @@ end
 
 def transform(element)
   #TODO:  Simply execute the given block on element
-  element do 
-  	yield
-  end
+  yield element
 end
 
