@@ -1,3 +1,5 @@
+require 'pry'
+
 TABLE_CONVERSION = {
   "I" => 1,
   "V" => 5,
@@ -14,6 +16,7 @@ def roman_to_integer(roman_string)
   sum = 0
   romans = roman_string.split(//)
   for i in 0...romans.length-1 do
+    binding.pry
     if TABLE_CONVERSION[romans[i]] >= TABLE_CONVERSION[romans[i+1]]
       sum += TABLE_CONVERSION[romans[i]]
     else

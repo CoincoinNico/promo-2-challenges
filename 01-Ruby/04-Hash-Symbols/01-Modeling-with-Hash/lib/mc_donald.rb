@@ -28,10 +28,10 @@ def calories_counter(*orders)
   #TODO: return number of calories for a less constrained order
   calories = 0
   orders.each do |order|
-  	if MACDO[order].nil?
-  		calories += MEALS[order]
-  	else
+  	if MACDO[order]
   		calories += MACDO[order]
+  	else
+  		calories += MEALS[order]
   	end
   end
   calories

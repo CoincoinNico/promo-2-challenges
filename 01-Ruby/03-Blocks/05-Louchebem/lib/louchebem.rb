@@ -1,7 +1,7 @@
 # encoding: utf-8
 def louchebemize_word(word)
   suffixes = ["em", "é", "ji", "oc", "ic", "uche", "ès"]
- 
+
 	if word.length == 1
   	word
   else
@@ -14,7 +14,7 @@ def louchebemize_word(word)
 		  end
   	else
   		word << word[0].downcase
-  		if 'bcdfghjklmnpqrstvwxz'.include? word[1]	  	
+  		if 'bcdfghjklmnpqrstvwxz'.include? word[1]
 			  word << word.slice!(1)
 			end
   		if word[0] == word[0].upcase
@@ -28,16 +28,15 @@ def louchebemize_word(word)
 word
 end
 
-louchebemize_word("se")
+p louchebemize_word("se")
 
 
 def louchebemize(sentence)
- 
+
   words = sentence.split(/\b/)
 
   words.each do |word|
-	  if word.match(/\w/) != nil
-      if word.match()
+	  if word.match(/\w/)
 	  	louchebemize_word(word)
 	  else
 	  	word
@@ -46,4 +45,4 @@ def louchebemize(sentence)
   words.join("")
 end
 
-louchebemize ("Le chat, va à la plage se baigner!!! Baptiste est venu à la maison.")
+p louchebemize ("Le chat, va à la plage se baigner!!! Baptiste est venu à la maison.")
