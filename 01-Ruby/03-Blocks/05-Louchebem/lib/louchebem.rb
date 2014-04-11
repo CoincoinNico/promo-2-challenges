@@ -28,12 +28,16 @@ def louchebemize_word(word)
 word
 end
 
+louchebemize_word("se")
+
+
 def louchebemize(sentence)
  
   words = sentence.split(/\b/)
 
   words.each do |word|
 	  if word.match(/\w/) != nil
+      if word.match()
 	  	louchebemize_word(word)
 	  else
 	  	word
@@ -42,3 +46,4 @@ def louchebemize(sentence)
   words.join("")
 end
 
+louchebemize ("Le chat, va à la plage se baigner!!! Baptiste est venu à la maison.")
