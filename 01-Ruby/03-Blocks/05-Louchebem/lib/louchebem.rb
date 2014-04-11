@@ -36,11 +36,7 @@ def louchebemize(sentence)
   words = sentence.split(/\b/)
 
   words.each do |word|
-	  if word.match(/\w/)
-	  	louchebemize_word(word)
-	  else
-	  	word
-	  end
+	  louchebemize_word(word) if word.match(/\w/)
 	end
   words.join("")
 end

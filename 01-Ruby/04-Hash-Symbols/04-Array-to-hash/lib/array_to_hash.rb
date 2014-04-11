@@ -6,6 +6,7 @@ array.each_with_index do |element, index|
   key = block_given? ? (yield(index)) : (index)
   hash_from_array[key] = element
 end
+
 hash_from_array
 
 end
