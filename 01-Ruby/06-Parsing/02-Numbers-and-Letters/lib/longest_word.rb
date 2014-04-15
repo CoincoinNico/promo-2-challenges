@@ -19,23 +19,17 @@ def run_game(attempt, grid, start_time, end_time)
   result[:time] = end_time - start_time
 
   #checks if attempt matches grid
+  word_in_grid = true
   attempt_array = attempt.upcase.each_char.to_a
-  attempt_hash = Hash.new
-  grid_hash = Hash.new
-
-  attempt_array.each{|x| attempt_hash[x] = attempt_array.count(x)}
-  grid.each{|x| grid_hash[x] = grid.count(x)}
-
-  match = true
-  for i in 0..attempt_array.length-1 do
-    match = false unless attempt_hash[attempt_array[i]] < grid_hash[attempt_array[i]] +1
+  attempt_array.each do |letter_attempt|
+   word_in_grid = false unless grid.include?(letter_attempt)
   end
-  p match
+
 
   uri = URI.parse("http://api.wordreference.com/0.8/80143/json/enfr/#{attempt}").read
   jason = JSON.parse (uri)
 
-  if match == false
+  if word_in_grid == false
     result[:score] = 0
     result[:message] = "not in the grid"
   elsif jason["Error"] == "NoTranslation"
