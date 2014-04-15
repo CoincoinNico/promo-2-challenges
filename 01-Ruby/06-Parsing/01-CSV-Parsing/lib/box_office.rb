@@ -13,10 +13,7 @@ def most_successfull(number, max_year, file_name)
   resultat_int << movie
   end
 
-
   resultat = resultat_int.sort_by { |hsh| hsh[:earnings] }.reverse!.select { |hsh| hsh[:year] < max_year }.take(number)
-
   resultat
 
 end
-
