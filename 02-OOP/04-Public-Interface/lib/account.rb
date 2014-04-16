@@ -14,13 +14,13 @@ class BankAccount
 
   MIN_DEPOSIT =  100
 
-  def initialize(name, iban, initial_deposit, password)
+  def initialize(name, iban_param, initial_deposit, password)
     raise DepositError, "Insufficient deposit" unless initial_deposit > MIN_DEPOSIT
     @password = password
     @transactions = []
     @position = 0
-    @name, @iban = name, iban
-
+    @name, @iban = name, iban_param
+    @hidden_iban = iban
     add_transaction(initial_deposit)
   end
 
@@ -41,11 +41,14 @@ class BankAccount
 
   def iban
     # TODO: Hide the middle of the IBAN like FR14**************606 and return it
+    "#{@iban.split(//).first(4).join}*#{@iban.split(//).last(3).join}"
+
   end
 
   def to_s
     # Method used when printing account object as string (also used for string interpolation)
     # TODO: Displays the account owner, the hidden iban and the position of the account
+    "Owner: #{@name} IBAN: #{@iban.iban} Current amount: #{@position.to_s}"
   end
 
   private
@@ -56,3 +59,7 @@ class BankAccount
   end
 
 end
+
+riche = BankAccount.new("tournaud", "1226666626666266662", 500000, "coucou")
+p riche.iban
+p riche.to_s
