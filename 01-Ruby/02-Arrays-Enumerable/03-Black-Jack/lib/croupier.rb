@@ -3,7 +3,7 @@ require_relative 'black_jack'
 def play_game
   #TODO: make the user play from terminal in a while loop that will stop when the user will not be asking for  a new card
 	while asking_for_card?(score) == true
-		
+
 	puts "Voulez-vous une carte ? yes or no"
   play = gets
   name.chomp! if name
@@ -12,7 +12,7 @@ end while play!=""
 end
 
 def state_of_the_game(score, bank)
-  # TODO: Returns the current score and the bank
+  # TODO: Returns custom message with player's score and bank's score
   puts score
   puts bank
 end
