@@ -1,4 +1,6 @@
 class Playboy
+  attr_reader :conquests, :nationality
+  attr_accessor :hair_length
 
   #TODO: implement necessary getters or setters to run meeting_casanova.rb
 
