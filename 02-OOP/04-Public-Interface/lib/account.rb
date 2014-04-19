@@ -3,7 +3,7 @@ class DepositError < StandardError
 end
 
 class BankAccount
-
+  attr_reader :name, :position
   # Contract for the BankAccount class
   # - you can access full owner's name and position, but partial IBAN
   # - you cannot access full IBAN
@@ -27,16 +27,29 @@ class BankAccount
   def withdraw(amount)
     # TODO: Call add_transaction with the right argument
     # TODO: returns a string with a message
+    add_transaction(-amount)
+    "You just withdrew #{amount} euros."
   end
 
   def deposit(amount)
     # TODO: Call add_transaction with the right argument
     # TODO: returns a string with a message
+    add_transaction(amount)
+    "You just added #{amount} euros."
   end
 
   def transactions_history(args = {})
     # TODO: Check if there is a password and if so if it is correct
     # TODO: return a string displaying the transactions, BUT NOT return the transaction array !
+    if args.length == 0
+      "no password given"
+    else
+      if args[:password] == @password
+        "#{@transactions.to_s}"
+      else
+        "wrong password"
+      end
+    end
   end
 
   def iban
@@ -48,7 +61,7 @@ class BankAccount
   def to_s
     # Method used when printing account object as string (also used for string interpolation)
     # TODO: Displays the account owner, the hidden iban and the position of the account
-    "Owner: #{@name} IBAN: #{@iban.iban} Current amount: #{@position.to_s}"
+    "Owner: #{@name} IBAN: #{@iban} Current amount: #{@position}"
   end
 
   private
@@ -56,10 +69,13 @@ class BankAccount
   def add_transaction(amount)
     # TODO: add the amount in the transactions array
     # TODO: update the current position (which represents the balance of the account)
+    @transactions << amount
+    @position += amount
   end
 
 end
 
-riche = BankAccount.new("tournaud", "1226666626666266662", 500000, "coucou")
-p riche.iban
-p riche.to_s
+# riche = BankAccount.new("tournaud", "1226666626666266662", 500, "coucou")
+# p riche.iban
+# p riche.deposit(300)
+# p riche.position
