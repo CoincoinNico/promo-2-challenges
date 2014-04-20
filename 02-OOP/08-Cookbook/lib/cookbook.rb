@@ -16,15 +16,18 @@ class Cookbook
   end
 
   def create(recipe)
-    CSV.open(@file, "a") { @recipes << recipe }
+    CSV.open(@file, "a") { |csv| csv << [recipe] && @recipes << recipe }
   end
 
   def destroy(index)
-    i = 0
-    CSV.foreach(@file) do |row|
-      @recipes.slice!(index) if i == index
-      i += 1
+    @recipes.slice!(index)
+    array = []
+    CSV.read(@file).each_with_index do |csv, i|
+      array << csv  if i != index
     end
+
+    CSV.open(@file, "a") { |csv| array.each { |element| csv << element } }
+
   end
 
   # TODO: Implement a save method that will write the data into the CSV
@@ -34,17 +37,10 @@ class Cookbook
   # And don't forget to use this save method when you have to modify something in your recipes array.
 end
 
-leo = Cookbook.new("lib/recipes.csv")
-p leo.all
-leo.create("Cake")
-p leo.all
+# leo = Cookbook.new("lib/recipes.csv")
+# p leo.all
+# leo.create("Cake")
+# p leo.all
+# leo.destroy(5)
+# p leo.all
 
-array = []
-leo1 = CSV.read("lib/recipes.csv").flatten.each {|line| array << line}
-p leo1
-p array
-leo.create("Cake")
-p array
-
-array.slice!(2)
-p array
