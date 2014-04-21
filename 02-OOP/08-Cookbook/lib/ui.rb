@@ -32,8 +32,9 @@ class UI
     # TODO: call the appropriate controller method with the proper argument(s)
     puts "-- Delete a recipe by specifying its number --"
     index = gets.chomp.to_i
-    puts "Your #{@recipe[index]} has been successfully deleted !"
-    @controller.delete(index-1)
+    recipe = @controller.delete(index)
+
+    puts "Your #{recipe} has been successfully deleted !"
   end
 
   def exit
@@ -47,7 +48,7 @@ class UI
     # [OPTIONAL] You can think of the case where the user
     # enters a wrong choice.
     puts "-- Need to write something ?--"
-    something = gets.chomp
+    something = gets.chomp.to_sym
     puts "And you  thought that was interesting ??? Pffff you wrote: #{something}"
   end
 

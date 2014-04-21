@@ -21,12 +21,12 @@ class Cookbook
   end
 
   def destroy(index)
-    @recipes.slice!(index)
+    recipe = @recipes.slice!(index)
     self.save
+    recipe
   end
 
   # TODO: Implement a save method that will write the data into the CSV
-
   def save
     CSV.open(@file, "w") { |csv| @recipes.each { |recipe| csv << [recipe] } }
   end
