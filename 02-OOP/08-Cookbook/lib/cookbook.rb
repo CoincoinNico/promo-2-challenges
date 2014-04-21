@@ -16,23 +16,19 @@ class Cookbook
   end
 
   def create(recipe)
-    CSV.open(@file, "a") { |csv| csv << [recipe] && @recipes << recipe }
+    @recipes << recipe
+    self.save
   end
 
   def destroy(index)
     @recipes.slice!(index)
-    array = []
-    CSV.read(@file).each_with_index do |csv, i|
-      array << csv  if i != index
-    end
-
-    CSV.open(@file, "a") { |csv| array.each { |element| csv << element } }
-
+    self.save
   end
 
   # TODO: Implement a save method that will write the data into the CSV
 
   def save
+    CSV.open(@file, "w") { |csv| @recipes.each { |recipe| csv << [recipe] } }
   end
   # And don't forget to use this save method when you have to modify something in your recipes array.
 end
