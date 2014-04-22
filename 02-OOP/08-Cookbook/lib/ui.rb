@@ -1,8 +1,9 @@
 class UI
   TASKS = {
+    import: "- Import recipes from marmiton [web_import]",
     list: "- List all recipes [list]",
     add:  "- Add a new recipe [add]",
-    del:  "- Delete a recipe [del]",
+    del:  "- Delete a recipe [del <recipe_id>]",
     exit: "- Exit [exit]"
   }
 
@@ -11,16 +12,19 @@ class UI
     @running = true
   end
 
+  def web_import
+    puts "-- Import recipes for which ingredient --"
+    ingredient = gets.chomp
+    @controller.web_import(ingredient)
+    "Importing recipe data from marmiton for #{ingredient}"
+  end
+
   def list
-    # TODO: call the appropriate controller method with the proper argument(s)
-    # TODO: format and display the retrieved data in a numbered list
     puts "-- Here are all your recipes --"
-    @controller.list.each_with_index { |row, i| "#{i+1}. #{row}"}
+    @controller.list.each_with_index { |row, i| p "#{i+1}. #{row}"}
   end
 
   def add
-    # TODO: ask the user a recipe name
-    # TODO: call the appropriate controller method with the proper argument(s)
     puts "-- Enter a new recipe name --"
     recipe = gets.chomp
     @controller.add(recipe)
@@ -28,8 +32,6 @@ class UI
   end
 
   def del
-    # TODO: ask the user a recipe index
-    # TODO: call the appropriate controller method with the proper argument(s)
     puts "-- Delete a recipe by specifying its number --"
     index = gets.chomp.to_i
     recipe = @controller.delete(index)
@@ -38,18 +40,13 @@ class UI
   end
 
   def exit
-    # TODO: exit the program
-    # Hint: Take a look at the display method !
     puts "Goodbye my dear friend."
   end
 
   def user_input
-    # TODO: Get the user input and return it
-    # [OPTIONAL] You can think of the case where the user
-    # enters a wrong choice.
     puts "-- Need to write something ?--"
-    something = gets.chomp.to_sym
-    puts "And you  thought that was interesting ??? Pffff you wrote: #{something}"
+    something = gets.chomp
+    something
   end
 
   def display

@@ -7,6 +7,10 @@ class Controller
   end
 
   # TODO: Implement the methods to retrieve, add, and delete recipes through the model
+  def web_import(ingredient)
+    @cookbook.web_import(ingredient)
+  end
+
   def list
     @cookbook.all
   end

@@ -1,5 +1,9 @@
 #model. Dialogue avec la BDD.
 require "csv"
+require 'open-uri'
+require 'json'
+require 'nokogiri'
+require_relative "recipe"
 
 class Cookbook
   attr_reader :recipes
@@ -11,6 +15,21 @@ class Cookbook
   end
 
   # TODO: Implement the methods to retrieve all recipes, create, or destroy recipes
+  def web_import(ingredient)
+    doc = Nokogiri::HTML(File.open(open("http://www.marmiton.org/recettes/recherche.aspx?aqt=#{ingredient}")))
+    doc.search('.m_search_result').each do |element|
+      recipe = Recipe.new
+      recipe.name = "#{element.search('.m_search_titre_recette > a').inner_text}, "
+      recipe.rating = "Rating : #{element.search('.etoile1').size / 5}, "
+      recipe.votes = "Nb votes: #{element.search('.m_search_nb_votes').inner_text.match(/\d+/)}, "
+      recipe.prep_time = "Prep time: #{element.search('.m_search_result_part4').inner_text.split(/\D+/)[1].to_i} minutes,"
+      recipe.cooking_time = "Cooking time: #{element.search('.m_search_result_part4').inner_text.split(/\D+/)[2].to_i} minutes,"
+      recipe.summary =  "Summary: #{element.search('.m_search_result_part4').inner_text.squeeze(" ").strip[37..186]}"
+      @recipes << recipe.to_s
+      self.save
+    end
+  end
+
   def all
     @recipes
   end
