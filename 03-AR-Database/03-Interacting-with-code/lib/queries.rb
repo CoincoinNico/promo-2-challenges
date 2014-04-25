@@ -15,11 +15,7 @@ end
 
 def sorted_artists(db)
   #TODO: return array of artists' names sorted alphabetically
-  array = []
-  db.execute("SELECT * FROM Artist ORDER BY Name") do |row|
-    array << row[1]
-  end
-  array
+  db.execute("SELECT * FROM Artist ORDER BY Name")
 end
 
 def love_tracks(db)
@@ -35,5 +31,5 @@ end
 # p number_of_rows(db, "Artist")
 # p sorted_artists(db)
 # p love_tracks(db)
- p long_tracks(db, 60)
+# p long_tracks(db, 60)
 
