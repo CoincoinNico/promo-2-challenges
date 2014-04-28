@@ -2,8 +2,8 @@ require 'sqlite3'
 
 def create_scheme(db)
   #TODO: create your db scheme
-  sql = %q{ 
-  }  # %q allows for multiline string in ruby 
+  sql = %q{
+  }  # %q allows for multiline string in ruby
   db.execute(sql)
 end
 
