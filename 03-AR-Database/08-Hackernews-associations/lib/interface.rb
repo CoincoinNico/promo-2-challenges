@@ -38,7 +38,7 @@ while true
     user.posts.create(post)
   when 2
     user.posts.all.each do |post|
-      p "#{post.id}. #{post.name}. URL: #{post.source_url}, RATING: #{post.rating} ADDED ON: #{post.date} BELONGS TO ID #{post.user_id}"
+      p "#{post.id}. #{post.name}. URL: #{post.source_url}, RATING: #{post.rating} ADDED ON: #{post.date} BELONGS TO #{post.user.name}"
     end
   when 3
     #TODO: use ActiveRecord to delete all posts of current user
