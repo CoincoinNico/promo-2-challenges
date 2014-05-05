@@ -1,0 +1,37 @@
+Artist = classe du modèle
+artists = nom de la table
+artist_id = clef étrangère (colonne id créée automatiquement)
+
+
+BDD : tables : posts, users, artists
+=> on va utiliser des Migrations qui vont agir sur le schema de notre BDD pour ajouter une colonne, supprimer une table, etc.
+
+Nos modèles ActiveRecord::Base: Post, User, Artist AR.Base
+
+Traduire les relations entre tables = associations AR (has_many, belongs_to)
+
+
+lib => fichier de config
+config
+Où il la trouve
+donner le chemin
+Dire quel type (postgre, mysql)
+
+Gemfile
+
+Créer une base de données
+1 migration par modif sur BDD
+Une migration est représentée par un fichier et représente les données pour passer d'une étape à une autre.
+Une migration va créer la table
+Blog: une migration pour créer posts, puis pour users
+
+cd db/migrate
+migrate ll
+
+
+It is very easy to create Active Record models. All you have to do is to subclass the ActiveRecord::Base class and you're good to go:
+
+class Product < ActiveRecord::Base
+end
+
+Rails provides a domain-specific language for managing a database schema called migrations. Migrations are stored in files which are executed against any database that Active Record supports using rake. Here's a migration that creates a table:
