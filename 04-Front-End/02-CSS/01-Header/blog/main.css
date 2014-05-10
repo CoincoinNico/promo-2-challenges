@@ -1,5 +1,28 @@
 .container {
-  margin: 0 auto;  
+  margin: 0 auto;
   width: 720px;
 	font-family: 'Open Sans', sans-serif;
+}
+
+h1 {
+  text-align: center;
+}
+
+header {
+  padding-bottom: 15px;
+  border-bottom: 1px solid grey;
+}
+
+header ul
+{
+list-style-type:none;
+margin:0;
+padding:0;
+text-align: center;
+}
+
+header li
+{
+display:inline;
+width: 100px;
 }
